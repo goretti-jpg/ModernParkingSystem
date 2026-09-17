@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment</title>
+
+    <!-- Connect to our CSS file -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Page heading -->
+    <header>
+        <h1>💳 Parking Bill</h1>
+        <p>Review your parking charges</p>
+    </header>
+
+    <main>
+
+        <section class="bill-card">
+
+            <h2>Parking Bill</h2>
+
+            <!-- Vehicle number plate -->
+            <div class="bill-row">
+                <span>Number Plate</span>
+                <strong>{{ vehicle["plate_number"] }}</strong>
+            </div>
+
+            <!-- Parking slot -->
+            <div class="bill-row">
+                <span>Parking Slot</span>
+                <strong>{{ vehicle["slot_number"] }}</strong>
+            </div>
+
+            <!-- Entry time -->
+            <div class="bill-row">
+                <span>Entry Time</span>
+                <strong>
+                    {{ vehicle["entry_time"].strftime("%d/%m/%Y %H:%M") }}
+                </strong>
+            </div>
+
+            <!-- Exit time -->
+            <div class="bill-row">
+                <span>Exit Time</span>
+                <strong>
+                    {{ vehicle["exit_time"].strftime("%d/%m/%Y %H:%M") }}
+                </strong>
+            </div>
+
+            <!-- Parking duration -->
+            <div class="bill-row">
+                <span>Duration</span>
+                <strong>
+                    {{ vehicle["duration_minutes"] }} minutes
+                </strong>
+            </div>
+
+            <!-- Amount to pay -->
+            <div class="total">
+                Amount to Pay:
+                <strong>KSh {{ amount }}</strong>
+            </div>
+
+            <!-- Payment button -->
+            <form method="POST">
+
+                <button type="submit" class="button">
+                    Pay & Open Barrier
+                </button>
+
+            </form>
+
+            <!-- Cancel and return home -->
+            <a href="{{ url_for('home') }}" class="back-link">
+                Cancel
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+```

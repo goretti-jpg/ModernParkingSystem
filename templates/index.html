@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern Parking System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        .parking-area {
+            display: grid;
+            grid-template-columns: repeat(5, 120px);
+            gap: 15px;
+            justify-content: center;
+            margin: 30px auto;
+        }
+
+        .slot {
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 8px;
+            background-color: white;
+        }
+
+        .available {
+            background-color: #d4edda;
+        }
+
+        .occupied {
+            background-color: #f8d7da;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🚗 Modern Parking System</h1>
+
+    <h2>Parking Slots</h2>
+
+    <div class="parking-area">
+
+        {% for slot_number, status in parking_slots.items() %}
+
+            {% if status == "Available" %}
+
+                <div class="slot available">
+                    <strong>Slot {{ slot_number }}</strong>
+                    <p>Available</p>
+                </div>
+
+            {% else %}
+
+                <div class="slot occupied">
+                    <strong>Slot {{ slot_number }}</strong>
+                    <p>{{ status }}</p>
+                </div>
+
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="buttons">
+
+        <a href="/entry">
+            <button>Vehicle Entry</button>
+        </a>
+
+        <a href="/exit">
+            <button>Vehicle Exit</button>
+        </a>
+
+    </div>
+
+</body>
+</html>
+```

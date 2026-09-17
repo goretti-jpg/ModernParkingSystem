@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vehicle Entry</title>
+
+    <!-- Connect to our CSS file -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Page heading -->
+    <header>
+        <h1>🚗 Vehicle Entry</h1>
+        <p>Register a vehicle and assign a parking slot</p>
+    </header>
+
+    <main>
+
+        <section class="form-card">
+
+            <h2>Vehicle Entry Form</h2>
+
+            <!-- Display an error message if there is one -->
+            {% if error %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <!-- Vehicle entry form -->
+            <form method="POST">
+
+                <label for="plate_number">
+                    Vehicle Number Plate
+                </label>
+
+                <input
+                    type="text"
+                    id="plate_number"
+                    name="plate_number"
+                    placeholder="e.g. KDA 123A"
+                    required
+                >
+
+                <button type="submit" class="button">
+                    Park Vehicle
+                </button>
+
+            </form>
+
+            <!-- Return to homepage -->
+            <a href="{{ url_for('home') }}" class="back-link">
+                ← Back to Parking Slots
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+```

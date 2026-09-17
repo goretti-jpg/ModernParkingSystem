@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Successful</title>
+
+    <!-- Connect to our CSS file -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <main>
+
+        <section class="success-card">
+
+            <h1>✅ Payment Successful</h1>
+
+            <p>
+                Vehicle:
+                <strong>{{ plate_number }}</strong>
+            </p>
+
+            <p>
+                Parking Slot:
+                <strong>{{ slot_number }}</strong>
+            </p>
+
+            <!-- Simulated barrier opening -->
+            <div class="barrier">
+                🚧 BARRIER OPEN
+            </div>
+
+            <p>
+                The parking slot has been released.
+            </p>
+
+            <!-- Return to homepage -->
+            <a class="button"
+               href="{{ url_for('home') }}">
+                Return to Parking System
+            </a>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+```
