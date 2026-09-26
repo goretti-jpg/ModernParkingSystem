@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Slots - Modern Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Modern Parking System</h1>
+    <p>Live Parking Slot Availability</p>
+</header>
+
+<main>
+
+    <div class="form-card">
+
+        <h2>Parking Slot Status</h2>
+
+        <div class="bill-row">
+            <span>Total Slots</span>
+            <strong>{{ total_slots }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Available Slots</span>
+            <strong>{{ available_slots|length }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Occupied Slots</span>
+            <strong>{{ occupied_slots|length }}</strong>
+        </div>
+
+    </div>
+
+
+    <div class="form-card" style="margin-top: 30px;">
+
+        <h2>All Parking Slots</h2>
+
+        <table>
+
+            <tr>
+                <th>Slot Number</th>
+                <th>Status</th>
+            </tr>
+
+            {% for slot, status in parking_slots.items() %}
+
+            <tr>
+                <td>{{ slot }}</td>
+
+                <td>
+                    {% if status == "Available" %}
+                        Available
+                    {% else %}
+                        Occupied - {{ status }}
+                    {% endif %}
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+
+    <a href="/" class="back-link">
+        ← Back to Home
+    </a>
+
+</main>
+
+</body>
+</html>
+
+

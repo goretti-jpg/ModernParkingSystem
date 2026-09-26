@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Payment - Modern Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Modern Parking System</h1>
+    <p>Parking Payment</p>
+</header>
+
+<main>
+
+    <div class="bill-card">
+
+        <h2>Parking Bill</h2>
+
+        <div class="bill-row">
+            <span>Vehicle Number</span>
+            <strong>{{ vehicle["plate_number"] }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Parking Slot</span>
+            <strong>{{ vehicle["slot_number"] }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Entry Time</span>
+            <strong>
+                {{ vehicle["entry_time"].strftime("%d/%m/%Y %H:%M") }}
+            </strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Exit Time</span>
+            <strong>
+                {{ vehicle["exit_time"].strftime("%d/%m/%Y %H:%M") }}
+            </strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Duration</span>
+            <strong>{{ vehicle["duration_minutes"] }} minutes</strong>
+        </div>
+
+        <div class="total">
+            <strong>
+                Amount Payable: KSh {{ amount }}
+            </strong>
+        </div>
+
+        <h3>Select Payment Method</h3>
+
+        <form method="POST">
+
+            <label for="payment_method">
+                Payment Method
+            </label>
+
+            <select
+                id="payment_method"
+                name="payment_method"
+                required
+            >
+                <option value="">-- Select Payment Method --</option>
+                <option value="M-Pesa">M-Pesa</option>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+            </select>
+
+            <br><br>
+
+            <button type="submit" class="button">
+                Confirm Payment
+            </button>
+
+        </form>
+
+        <a href="/" class="back-link">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>
+
+

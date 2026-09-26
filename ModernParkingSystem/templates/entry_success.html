@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Entry Successful - Modern Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Modern Parking System</h1>
+    <p>Vehicle Entry</p>
+</header>
+
+<main>
+
+    <div class="success-card">
+
+        <h2>Vehicle Entry Successful</h2>
+
+        <div class="barrier">
+            PARKING SLOT ASSIGNED
+        </div>
+
+        <div class="bill-row">
+            <span>Vehicle Number</span>
+            <strong>{{ vehicle["plate_number"] }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Parking Slot</span>
+            <strong>{{ vehicle["slot_number"] }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Entry Time</span>
+            <strong>{{ vehicle["entry_time"].strftime("%d/%m/%Y %H:%M") }}</strong>
+        </div>
+
+        <p>
+            Your vehicle has been successfully recorded
+            in the parking system.
+        </p>
+
+        <a href="/" class="button">
+            Back to Home
+        </a>
+
+        <a href="/exit" class="button secondary">
+            Vehicle Exit
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>

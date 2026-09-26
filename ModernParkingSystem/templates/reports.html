@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Administrative Reports - Modern Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Modern Parking System</h1>
+    <p>Administrative Reports</p>
+</header>
+
+<main>
+
+    <!-- Total Collection -->
+
+    <div class="success-card">
+
+        <h2>Total Amount Collected</h2>
+
+        <div class="total">
+            <strong>KSh {{ total_collected }}</strong>
+        </div>
+
+    </div>
+
+
+    <!-- Vehicle Records -->
+
+    <div class="form-card" style="margin-top: 30px;">
+
+        <h2>Vehicle Records</h2>
+
+        {% if vehicle_records %}
+
+        <table>
+
+            <tr>
+                <th>Plate Number</th>
+                <th>Slot</th>
+                <th>Entry Time</th>
+                <th>Exit Time</th>
+                <th>Duration</th>
+                <th>Amount</th>
+                <th>Payment Status</th>
+            </tr>
+
+            {% for vehicle in vehicle_records %}
+
+            <tr>
+
+                <td>{{ vehicle["plate_number"] }}</td>
+
+                <td>{{ vehicle["slot_number"] }}</td>
+
+                <td>
+                    {{ vehicle["entry_time"].strftime("%d/%m/%Y %H:%M") }}
+                </td>
+
+                <td>
+                    {% if vehicle["exit_time"] %}
+                        {{ vehicle["exit_time"].strftime("%d/%m/%Y %H:%M") }}
+                    {% else %}
+                        Still Inside
+                    {% endif %}
+                </td>
+
+                <td>
+                    {{ vehicle["duration_minutes"] }} minutes
+                </td>
+
+                <td>
+                    KSh {{ vehicle["amount"] }}
+                </td>
+
+                <td>
+                    {{ vehicle["payment_status"] }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No vehicle records available yet.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- Payment Records -->
+
+    <div class="form-card" style="margin-top: 30px;">
+
+        <h2>Payment Records</h2>
+
+        {% if payment_records %}
+
+        <table>
+
+            <tr>
+                <th>Plate Number</th>
+                <th>Slot</th>
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Payment Time</th>
+            </tr>
+
+            {% for record in payment_records %}
+
+            <tr>
+
+                <td>{{ record["plate_number"] }}</td>
+
+                <td>{{ record["slot_number"] }}</td>
+
+                <td>
+                    KSh {{ record["amount"] }}
+                </td>
+
+                <td>
+                    {{ record["payment_method"] }}
+                </td>
+
+                <td>
+                    {{ record["payment_time"].strftime("%d/%m/%Y %H:%M") }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No payment records available yet.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <a href="/" class="back-link">
+        ← Back to Home
+    </a>
+
+</main>
+
+</body>
+</html>
+

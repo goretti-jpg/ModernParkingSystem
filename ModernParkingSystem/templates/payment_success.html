@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Successful - Modern Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Modern Parking System</h1>
+    <p>Payment Confirmation</p>
+</header>
+
+<main>
+
+    <div class="success-card">
+
+        <h2>Payment Successful</h2>
+
+        <div class="barrier">
+            PAYMENT COMPLETED
+        </div>
+
+        <div class="bill-row">
+            <span>Vehicle Number</span>
+            <strong>{{ plate_number }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Parking Slot</span>
+            <strong>{{ slot_number }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Amount Paid</span>
+            <strong>KSh {{ amount }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Payment Method</span>
+            <strong>{{ payment_method }}</strong>
+        </div>
+
+        <p>
+            Thank you. Your payment has been successfully recorded.
+        </p>
+
+        <p>
+            The parking slot has now been released.
+        </p>
+
+        <a href="/" class="button">
+            Back to Home
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>
+

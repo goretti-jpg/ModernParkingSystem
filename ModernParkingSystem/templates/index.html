@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modern Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Modern Parking System</h1>
+    <p>Smart Parking Management</p>
+</header>
+
+<main>
+
+    <!-- Parking Summary -->
+
+    <div class="form-card">
+
+        <h2>Parking Lot Status</h2>
+
+        <div class="bill-row">
+            <span>Total Parking Slots</span>
+            <strong>{{ total_slots }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Available Slots</span>
+            <strong>{{ available_slots|length }}</strong>
+        </div>
+
+        <div class="bill-row">
+            <span>Occupied Slots</span>
+            <strong>{{ occupied_slots|length }}</strong>
+        </div>
+
+    </div>
+
+
+    <!-- System Menu -->
+
+    <div class="form-card" style="margin-top: 30px;">
+
+        <h2>System Menu</h2>
+
+        <a href="/entry" class="button">
+            Vehicle Entry
+        </a>
+
+        <a href="/exit" class="button">
+            Vehicle Exit
+        </a>
+
+        <a href="/slots" class="button">
+            View Parking Slots
+        </a>
+
+        <a href="/reports" class="button">
+            Administrative Reports
+        </a>
+
+        <a href="/settings" class="button">
+            Parking Settings
+        </a>
+
+    </div>
+
+
+    <!-- Parking Slot Overview -->
+
+    <div class="form-card" style="margin-top: 30px;">
+
+        <h2>Parking Slot Overview</h2>
+
+        <table>
+
+            <tr>
+                <th>Slot Number</th>
+                <th>Status</th>
+            </tr>
+
+            {% for slot, status in parking_slots.items() %}
+
+            <tr>
+                <td>{{ slot }}</td>
+                <td>{{ status }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</main>
+
+</body>
+</html>
+```
+
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Entry - Modern Parking System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Modern Parking System</h1>
+    <p>Vehicle Entry</p>
+</header>
+
+<main>
+
+    <div class="form-card">
+
+        <h2>Vehicle Entry</h2>
+
+        <p>
+            Enter the vehicle registration number to assign
+            an available parking slot.
+        </p>
+
+        <form method="POST">
+
+            <label for="plate_number">
+                Vehicle Registration Number
+            </label>
+
+            <input
+                type="text"
+                id="plate_number"
+                name="plate_number"
+                placeholder="e.g. KDA123A"
+                required
+            >
+
+            <button type="submit" class="button">
+                Enter Parking Lot
+            </button>
+
+        </form>
+
+        <a href="/" class="back-link">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>
+
+
